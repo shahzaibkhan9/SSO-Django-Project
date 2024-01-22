@@ -1,0 +1,46 @@
+{% extends 'main/old/base_old.html' %}
+{% load static %}
+
+<title>{% block title %}Users List{% endblock %}</title>
+
+{% block content %}
+
+<h1>User List</h1>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Allowed Apps</th>
+                <th>Actions</th>
+            </tr>0
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>
+                    {% with user_profile=user.userprofile %}
+                        {% if user_profile %}
+                            {% for app in user_profile.allowed_apps.all %}
+                                <img src="{{ app.icon.url }}" alt="{{ app.name }}" width="32" height="32">
+                                {{ app.name }}<br>
+                            {% endfor %}
+                        {% else %}
+                            <p>No apps assigned</p>
+                        {% endif %}
+                    {% endwith %}
+                </td>
+                <td>
+                    <!-- Edit link -->
+                    <a href="{% url 'edit_user' user.id %}">Edit</a>
+                    <!-- Add delete link if needed -->
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

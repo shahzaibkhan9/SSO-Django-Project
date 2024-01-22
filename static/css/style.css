@@ -1,0 +1,108 @@
+.form-check {
+    margin-right: 20px;
+}
+
+.form-check:last-child {
+    margin-right: 0px;
+}
+
+.invalid-feedback {
+    display: block !important;
+}
+
+.input-group .toggle-password {
+    cursor: pointer !important;
+  }
+
+.password-strength-meter {
+    width: 100%;
+    height: 10px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.strength-bar {
+    height: 100%;
+    width: 0;
+    transition: width 0.3s ease-in-out;
+}
+
+.very-weak { background-color: #dc3545; }
+.weak { background-color: #ff9800; }
+.fair { background-color: #ffc107; }
+.strong { background-color: #4caf50; }
+.very-strong { background-color: #28a745; }
+
+/* Additional styling to make the feedback more prominent */
+#password-strength-feedback {
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+
+
+.alert.alert-danger {
+    background-color: #f44336; /* Red background color */
+    color: white; /* White text color */
+    padding: 5px 0px; /* Adjust padding as needed */
+    border-radius: 5px; /* Rounded corners */
+    margin-bottom: 10px; /* Add some spacing at the bottom */
+}
+
+
+/* Position the icon relative to the input field */
+.input-group {
+    position: relative;
+}
+
+.field-icon {
+    position: absolute;
+    top: 22%;
+    transform: translateY(-50%);
+    right: 10px; /* Adjust the right distance as needed */
+    cursor: pointer;
+}
+
+/* Adjust input field styles to make room for the icon */
+.form-control {
+    padding-right: 30px; /* Adjust the right padding to make space for the icon */
+}
+.card .add_app {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.add_app .card-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.add_app .btn-primary {
+    width: 100%;
+    margin-top: 10px; /* Add some space below the button */
+}
+
+/* Style the form elements */
+.add_app .form-group {
+    margin-bottom: 20px; /* Increase the margin between form groups */
+}
+
+.add_app .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.add_app .form-group input::placeholder {
+    color: #999;
+}
+
+/* Keep the border on focus */
+.add_app .form-group input:focus {
+    border: 1px solid #ccc;
+}

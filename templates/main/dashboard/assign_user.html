@@ -1,0 +1,84 @@
+{% extends 'main/generic/base_generic.html' %}
+
+<title>{% block title %}Add Applications{% endblock %}</title>
+
+
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+
+  <div class="form-group" style="display: none;">
+    <label for="{{ form.user.id_for_label }}">Select User:</label>
+    <!-- Display the username -->
+    <input type="text" class="form-control" value="{{ user.username }}" readonly>
+    <!-- Include the user ID in a hidden field -->
+    <input type="hidden" name="{{ form.user.name }}" value="{{ user.pk }}">
+</div>
+
+      <div class="row mb-4">
+        <div class="col-lg-6 col-md-6 mb-md-0 mb-4">
+          <div class="card">
+            <div class="card-header pb-0">
+              <div class="row">
+                <div class="col-lg-6 col-7">
+                  <h6>Applications</h6>
+
+                </div>
+                <div class="col-lg-6 col-5 my-auto text-end">
+                  <div class="dropdown float-lg-end pe-4">
+                    <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fa fa-ellipsis-v text-secondary"></i>
+                    </a>
+                    <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
+                      <li><a class="dropdown-item border-radius-md" href="{% url 'add_app' %}">Add Applications</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-body px-0 pb-2">
+              <div class="table-responsive">
+                <table class="table align-items-center mb-0">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Apps</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <!-- <div class="d-flex px-2 py-1">
+                          <div>
+                            <input type="checkbox" class="avatar avatar-xs me-3 ">
+                            <img src="../assets/img/small-logos/logo-xd.svg" class="avatar avatar-sm me-3 mb-3" alt="xd">
+                          </div>
+                          <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-3 text-sm">Material XD Version</h6>
+                          </div>
+                        </div> -->
+                        {% for app in form.apps.field.queryset %}
+                          <div class="form-check">
+                              <input class="form-check-input" type="checkbox" name="{{ form.apps.name }}" value="{{ app.pk }}"
+                                      {% if app in form.initial.apps.all %} checked{% endif %}>
+                              <label class="form-check-label">{{ app.name }}</label>
+                          </div>
+                        {% endfor %}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="d-flex justify-content-end">
+                <button class="btn btn-sm btn-primary" type="submit">Update</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</form>
+{% endblock %}
+
+
+

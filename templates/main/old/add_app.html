@@ -1,0 +1,14 @@
+{% extends 'main/old/add_app.html' %}
+{% load static %}
+
+
+<title>{% block title %}Add App{% endblock %}</title>
+
+{% block content %}
+    <h1>Add App</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit">Add App</button>
+    </form>
+    {% endblock %}

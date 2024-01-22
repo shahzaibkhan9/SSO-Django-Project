@@ -1,0 +1,9 @@
+{% if user.is_authenticated %}
+
+{% include 'main/dashboard/dashboard.html' %}
+
+{% else %}
+
+{% include 'registration/sign-in.html' %}
+
+{% endif %}

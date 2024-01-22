@@ -1,0 +1,189 @@
+{% extends 'registration/base_registration.html' %}
+{% load static %}
+
+<title>{% block title %}Sign Up{% endblock %}</title>
+
+{% block content %}
+
+<section>
+    <div class="page-header min-vh-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
+                    <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center" style="background-image: url('{% static 'img/illustrations/illustration-signup.jpg' %}'); background-size: cover;">
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
+                    <div class="card card-plain">
+                        <div class="card-header">
+                            <h4 class="font-weight-bolder">Sign Up</h4>
+                            <p class="mb-0">Enter your information to register</p>
+                        </div>
+                        <div class="card-body">
+                            <form method="post" action="{% url 'register_user' %}">
+                                {% csrf_token %}
+                                <div class="input-group input-group-outline mb-3">
+                                    <label class="form-label">Username</label>
+                                    {{ form.username }}
+                                    {% if form.username.errors %}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.username.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="input-group input-group-outline mb-3">
+                                    <label class="form-label">First Name</label>
+                                    {{ form.first_name }}
+                                </div>
+                                <div class="input-group input-group-outline mb-3">
+                                    <label class="form-label">Last Name</label>
+                                    {{ form.last_name }}
+                                </div>
+                                <div class="input-group input-group-outline mb-3">
+                                    <label class="form-label">Email Address</label>
+                                    {{ form.email }}
+                                    {% if form.email.errors %}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.email.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                <div class="input-group input-group-outline mb-3">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" id="passwordInput" name="password1" class="form-control">
+                                    <span toggle="#passwordInput" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                    <div class="password-strength-meter">
+                                        <div id="password-strength-bar" class="strength-bar"></div>
+                                    </div>
+                                    <div id="password-strength-feedback" class="mt-2"></div>
+                                    {% if form.password1.errors %}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.password1.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %} 
+                                </div>
+                                <div class="input-group input-group-outline mb-3">
+                                    <label class="form-label">Confirm Password</label>
+                                    {{ form.password2 }}
+                                    {% if form.password2.errors %}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.password2.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="form-check form-check-info text-start ps-0">
+                                    {{ form.agree }}
+                                    <input class="form-check-input" type="checkbox" id="agreeCheckbox" required>
+                                    <label class="form-check-label" for="agreeCheckbox">
+                                        I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms and Conditions</a>
+                                    </label>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign Up</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                            <p class="mb-2 text-sm mx-auto">
+                                Already have an account?
+                                <a href="{% url 'home' %}" class="text-primary text-gradient font-weight-bold">Sign in</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer position-absolute bottom-2 py-2 w-100">
+        <div class="container">
+            <div class="row align-items-center justify-content-lg-between">
+                <div class="col-12 col-md-6 my-auto">
+                    <div class="copyright text-center text-sm text-black text-lg-start">
+                        © <script>
+                            document.write(new Date().getFullYear())
+                        </script>,
+                        made with <i class="fa fa-heart" aria-hidden="true"></i> by
+                        <a href="https://www.creative-tim.com" class="font-weight-bold text-black" target="_blank">Creative Tim</a>
+                        for a better web.
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                        <li class="nav-item">
+                            <a href="https://www.creative-tim.com/presentation" class="nav-link text-black" target="_blank">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://www.creative-tim.com/blog" class="nav-link text-black" target="_blank">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-black" target="_blank">License</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function() {
+                $(".toggle-password").click(function() {
+                    $(this).toggleClass("fa-eye fa-eye-slash");
+                    var input = $($(this).attr("toggle"));
+                    if (input.attr("type") == "password") {
+                        input.attr("type", "text");
+                    } else {
+                        input.attr("type", "password");
+                    }
+                });
+            });
+        </script>
+
+        <script>
+
+            const passwordInput = document.getElementById("passwordInput");
+            const passwordStrengthBar = document.getElementById("password-strength-bar");
+            const passwordStrengthFeedback = document.getElementById("password-strength-feedback");
+
+            // function togglePasswordVisibility() {
+            //     if (passwordInput.type === "password") {
+            //         passwordInput.type = "text";
+            //         toggleButton.textContent = "Hide Password";
+            //     } else {
+            //         passwordInput.type = "password";
+            //         toggleButton.textContent = "Show Password";
+            //     }
+            // }
+
+            passwordInput.addEventListener("input", function () {
+                const password = passwordInput.value;
+                const result = zxcvbn(password);
+
+                // Update password strength bar width
+                const maxStrength = 4; // Maximum zxcvbn score
+                const strengthPercentage = (result.score / maxStrength) * 100;
+                passwordStrengthBar.style.width = `${strengthPercentage}%`;
+
+                // Update password strength feedback message
+                const feedbackMessages = [
+                    "Very Weak",
+                    "Weak",
+                    "Fair",
+                    "Strong",
+                    "Very Strong"
+                ];
+                passwordStrengthFeedback.innerText = feedbackMessages[result.score];
+                passwordStrengthBar.className = `strength-bar ${feedbackMessages[result.score].toLowerCase()}`;
+            });
+
+
+        </script>
+    </footer>
+</section>
+
+{% endblock %}

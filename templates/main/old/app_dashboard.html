@@ -1,0 +1,23 @@
+{% extends 'main/base_old.html' %}
+{% load static %}
+
+
+<title>{% block title %}App Dashboard{% endblock %}</title>
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="mt-4">Welcome to Your Okta Dashboard</h1>
+        <ul class="list-group mt-3">
+            {% for app in allowed_apps.all %}
+            <li class="list-group-item">
+                <div class="d-flex align-items-center">
+                    <img src="{{ app.icon.url }}" width="50" height="50" class="me-3" alt="{{ app.name }} Icon">
+                    <h5 class="mb-0">{{ app.name }}</h5>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
