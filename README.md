@@ -1,3 +1,21 @@
+**Project Contribution: Okta Replication**
+
+In this project, I significantly contributed to replicating the functionality of the <a href="https://www.okta.com/">Okta system</a>. 
+
+**Key Features:**
+1. **Material UI Integration:** Tailoring the user interface to our specific needs, I seamlessly integrated the Material UI Template (Bootstrap) into our system, ensuring an intuitive and visually appealing user experience.
+   
+2. **Django Backend Development:** Leveraging Django's robust framework, I spearheaded the development of the backend, compartmentalizing each component into separate Django apps. This approach enhanced scalability and maintainability, crucial for a complex application like ours.
+
+3. **Dynamic Application Assignment:** Implementing a dynamic feature, I enabled the assignment of specific applications to individual users based on their unique requirements. This personalized approach streamlined user workflows and optimized productivity within our organization.
+
+**Rationale for Django Usage:**
+We opted for Django due to the intricate nature of our application. Recognizing the need for modularity and organization, our team unanimously decided on Django to facilitate the development process. By structuring each component as a separate Django app, we ensured clarity, efficiency, and ease of management throughout the project lifecycle.
+
+**Note:** While our project was initially intended for internal use within our organization, its development was halted per the request of our project lead.
+
+---
+
 # SSO-Django-Project
 
 In response to the increasing demand for streamlined user authentication and enhanced security, we present a groundbreaking project that aims to develop a custom Single Sign-On (SSO) solution using Django and OAuth 2.0. Our project envisions creating a robust SSO platform that empowers users to access multiple applications with a unified set of credentials. Inspired by the success of identity management platforms like Okta, our initiative seeks to provide an open-source alternative that enhances user experience, elevates security measures, and simplifies user access across diverse applications.
